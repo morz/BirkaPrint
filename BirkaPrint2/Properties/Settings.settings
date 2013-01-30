@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BirkaPrint2.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Proisvodstvo_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">30/19</Value>
+    </Setting>
+    <Setting Name="CodeOborudovoniya_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">36/26</Value>
+    </Setting>
+    <Setting Name="SystemUpravleniya_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">30/35</Value>
+    </Setting>
+    <Setting Name="CodeBlocka_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28/42</Value>
+    </Setting>
+    <Setting Name="SerialNumber_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">32/49</Value>
+    </Setting>
+    <Setting Name="Data_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">32/55</Value>
+    </Setting>
+    <Setting Name="Fio_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">33/64</Value>
+    </Setting>
+    <Setting Name="Neispravnost_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">26/80</Value>
+    </Setting>
+    <Setting Name="Zayavka_xy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">20/8</Value>
+    </Setting>
+    <Setting Name="StpMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
