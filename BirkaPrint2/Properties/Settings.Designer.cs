@@ -142,5 +142,125 @@ namespace BirkaPrint2.Properties {
                 this["StpMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30/16")]
+        public string STP_P {
+            get {
+                return ((string)(this["STP_P"]));
+            }
+            set {
+                this["STP_P"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("35/22")]
+        public string STP_CO {
+            get {
+                return ((string)(this["STP_CO"]));
+            }
+            set {
+                this["STP_CO"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("36/27")]
+        public string STP_SU {
+            get {
+                return ((string)(this["STP_SU"]));
+            }
+            set {
+                this["STP_SU"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("23/34")]
+        public string STP_CB {
+            get {
+                return ((string)(this["STP_CB"]));
+            }
+            set {
+                this["STP_CB"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15/39")]
+        public string STP_SN {
+            get {
+                return ((string)(this["STP_SN"]));
+            }
+            set {
+                this["STP_SN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("38/45")]
+        public string STP_D {
+            get {
+                return ((string)(this["STP_D"]));
+            }
+            set {
+                this["STP_D"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("37/50")]
+        public string STP_FIO {
+            get {
+                return ((string)(this["STP_FIO"]));
+            }
+            set {
+                this["STP_FIO"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10/71")]
+        public string STP_N {
+            get {
+                return ((string)(this["STP_N"]));
+            }
+            set {
+                this["STP_N"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20/7")]
+        public string STP_Z {
+            get {
+                return ((string)(this["STP_Z"]));
+            }
+            set {
+                this["STP_Z"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("22/56")]
+        public string STP_T {
+            get {
+                return ((string)(this["STP_T"]));
+            }
+            set {
+                this["STP_T"] = value;
+            }
+        }
     }
 }

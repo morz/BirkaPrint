@@ -22,6 +22,7 @@ namespace BirkaPrint2
         string[] zayavka_xy = Properties.Settings.Default.Zayavka_xy.Split('/');
 
         bool has_zayavka = true;
+        private static System.Drawing.Printing.PrintPageEventArgs evv;
 
         Dictionary<Int32, LabelTextsClass> LabelTexts = new Dictionary<Int32, LabelTextsClass>();
 
@@ -69,11 +70,6 @@ namespace BirkaPrint2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (IsStp)
-            {
-                MessageBox.Show("Функция печати бирок по форме \"4209 по СТП\" пока ещё не реализована.\nДанная возможность появится в скором времени.\nСпасибо за понимание.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             if (!IsValid()) return;
 
             if (printDialog1.ShowDialog() == DialogResult.OK)
@@ -90,13 +86,22 @@ namespace BirkaPrint2
             }
         }
 
-        private static System.Drawing.Printing.PrintPageEventArgs evv;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs ev)
         {
             evv = ev;
+            if (IsStp)
+                PrintStpText();
+            else
+                PrintNormalText();
+            ev = evv;
+            ev.HasMorePages = false;
+        }
+
+        private void PrintNormalText()
+        {
             if (has_zayavka)
             {
-                CreateText(Convert.ToDouble(zayavka_xy[0]), Convert.ToDouble(zayavka_xy[1]), String.Format("З.№:{0}",ZayavkaText.Text));
+                CreateText(Convert.ToDouble(zayavka_xy[0]), Convert.ToDouble(zayavka_xy[1]), String.Format("З.№:{0}", ZayavkaText.Text));
             }
             CreateText(Convert.ToDouble(proisv_xy[0]), Convert.ToDouble(proisv_xy[1]), "МСП к. 15/2");
             CreateText(Convert.ToDouble(cobor_xy[0]), Convert.ToDouble(cobor_xy[1]), CodeText.Text);
@@ -106,30 +111,44 @@ namespace BirkaPrint2
             CreateText(Convert.ToDouble(data_xy[0]), Convert.ToDouble(data_xy[1]), DateTime.Now.ToString("dd.M.yyyy"));
             CreateText(Convert.ToDouble(fio_xy[0]), Convert.ToDouble(fio_xy[1]), String.Format("{0} {1}", FIOText.Text, "т.12-32-77"), 8.1f);
             if (DescText.Text.Length > 0)
-                CreateText(Convert.ToDouble(neispr_xy[0]), Convert.ToDouble(neispr_xy[1]), Slice(DescText.Text,0, 24));
+                CreateText(Convert.ToDouble(neispr_xy[0]), Convert.ToDouble(neispr_xy[1]), Slice(DescText.Text, 0, 24));
             if (DescText.Text.Length > 24)
-                CreateText(Convert.ToDouble(neispr_xy[0]), Convert.ToDouble(neispr_xy[1]) + 7, Slice(DescText.Text,24, 44));
+                CreateText(Convert.ToDouble(neispr_xy[0]), Convert.ToDouble(neispr_xy[1]) + 7, Slice(DescText.Text, 24, 44));
             if (DescText.Text.Length > 44)
-                CreateText(Convert.ToDouble(neispr_xy[0]), Convert.ToDouble(neispr_xy[1]) + 7 + 7, Slice(DescText.Text,44, 64));
-            ev = evv;
-            ev.HasMorePages = false;
+                CreateText(Convert.ToDouble(neispr_xy[0]), Convert.ToDouble(neispr_xy[1]) + 7 + 7, Slice(DescText.Text, 44, 64));
+        }
+
+        private void PrintStpText()
+        {
+            if (has_zayavka)
+            {
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_Z.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_Z.Split('/')[1]), String.Format("З.№:{0}", ZayavkaText.Text));
+            }
+            CreateText(Convert.ToDouble(Properties.Settings.Default.STP_P.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_P.Split('/')[1]), "МСП к. 15/2");
+            CreateText(Convert.ToDouble(Properties.Settings.Default.STP_CO.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_CO.Split('/')[1]), CodeText.Text);
+            CreateText(Convert.ToDouble(Properties.Settings.Default.STP_SU.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_SU.Split('/')[1]), SystemText.Text);
+            CreateText(Convert.ToDouble(Properties.Settings.Default.STP_CB.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_CB.Split('/')[1]), NameText.Text);
+            CreateText(Convert.ToDouble(Properties.Settings.Default.STP_SN.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_SN.Split('/')[1]), NumberText.Text);
+            CreateText(Convert.ToDouble(Properties.Settings.Default.STP_D.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_D.Split('/')[1]), DateTime.Now.ToString("dd.M.yyyy"));
+            CreateText(Convert.ToDouble(Properties.Settings.Default.STP_FIO.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_FIO.Split('/')[1]),FIOText.Text);
+            CreateText(Convert.ToDouble(Properties.Settings.Default.STP_T.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_T.Split('/')[1]), "12-32-77");
+            if (DescText.Text.Length > 0)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]), Slice(DescText.Text, 0, 28));
+            if (DescText.Text.Length > 28)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 5, Slice(DescText.Text, 28, 56));
+            if (DescText.Text.Length > 56)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 10, Slice(DescText.Text, 56, 84));
+            if (DescText.Text.Length > 84)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 15, Slice(DescText.Text, 84, 112));
+            if (DescText.Text.Length > 112)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 20, Slice(DescText.Text, 112, 140));
         }
 
         private void CreateText(double x, double y, string text, float size = 11f)
         {
             printDocument1.OriginAtMargins = true;
             evv.PageSettings.Margins = new System.Drawing.Printing.Margins(0, 0, 0, 0);
-            //evv.PageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Бирка", 104, 74);
             var font = new Font("Courier New", size);
-            //int h = (int)evv.Graphics.MeasureString(text, font).Height + 5;
-            //int w = (int)evv.Graphics.MeasureString(text, font).Width + 1;
-
-            //var stringFormat = new StringFormat();
-            //stringFormat.Alignment = StringAlignment.Near;
-            //stringFormat.LineAlignment = StringAlignment.Near;
-
-            //RectangleF rect1 = new RectangleF(evv.MarginBounds.Width / 2 + in_mm(x + 15) - w, in_mm(y - 7), w, h);
-
             evv.Graphics.DrawString(text, font, Brushes.Black, in_mm(evv.MarginBounds.Left/2 + x + 15), in_mm(y));
         }
 
