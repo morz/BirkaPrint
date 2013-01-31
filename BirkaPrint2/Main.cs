@@ -24,6 +24,8 @@ namespace BirkaPrint2
         bool has_zayavka = true;
         private static System.Drawing.Printing.PrintPageEventArgs evv;
 
+        string FormLabelText = "Форма 4290";
+
         Dictionary<Int32, LabelTextsClass> LabelTexts = new Dictionary<Int32, LabelTextsClass>();
 
         public bool IsStp
@@ -47,7 +49,7 @@ namespace BirkaPrint2
             Properties.Settings.Default.Properties["StpMode"].IsReadOnly = false;
 
             LabelTexts[1] = new LabelTextsClass("Код оборудования");
-            LabelTexts[2] = new LabelTextsClass("Система управления", "Узел");
+            LabelTexts[2] = new LabelTextsClass("Система управления", "Наименование узла");
             LabelTexts[3] = new LabelTextsClass("Наименование блока", "Код ВАЗа");
             LabelTexts[4] = new LabelTextsClass("Серийный номер", "Тип");
             LabelTexts[5] = new LabelTextsClass("Фамилия");
@@ -133,15 +135,15 @@ namespace BirkaPrint2
             CreateText(Convert.ToDouble(Properties.Settings.Default.STP_FIO.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_FIO.Split('/')[1]),FIOText.Text);
             CreateText(Convert.ToDouble(Properties.Settings.Default.STP_T.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_T.Split('/')[1]), "12-32-77");
             if (DescText.Text.Length > 0)
-                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]), Slice(DescText.Text, 0, 28));
-            if (DescText.Text.Length > 28)
-                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 5, Slice(DescText.Text, 28, 56));
-            if (DescText.Text.Length > 56)
-                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 10, Slice(DescText.Text, 56, 84));
-            if (DescText.Text.Length > 84)
-                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 15, Slice(DescText.Text, 84, 112));
-            if (DescText.Text.Length > 112)
-                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 20, Slice(DescText.Text, 112, 140));
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]), Slice(DescText.Text, 0, 24));
+            if (DescText.Text.Length > 24)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 5, Slice(DescText.Text, 24, 48));
+            if (DescText.Text.Length > 48)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 10, Slice(DescText.Text, 48, 72));
+            if (DescText.Text.Length > 72)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 15, Slice(DescText.Text, 72, 96));
+            if (DescText.Text.Length > 96)
+                CreateText(Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_N.Split('/')[1]) + 20, Slice(DescText.Text, 96, 120));
         }
 
         private void CreateText(double x, double y, string text, float size = 11f)
@@ -149,7 +151,7 @@ namespace BirkaPrint2
             printDocument1.OriginAtMargins = true;
             evv.PageSettings.Margins = new System.Drawing.Printing.Margins(0, 0, 0, 0);
             var font = new Font("Courier New", size);
-            evv.Graphics.DrawString(text, font, Brushes.Black, in_mm(evv.MarginBounds.Left/2 + x + 15), in_mm(y));
+            evv.Graphics.DrawString(text, font, Brushes.Black, in_mm(evv.MarginBounds.Left/2 + x + 15), in_mm(y- (IsStp ? 6 : 7)));
         }
 
         public static string Slice(string source, int start, int end)
@@ -240,6 +242,7 @@ namespace BirkaPrint2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            formlabel.Text = IsStp ? FormLabelText + " по СТП" : FormLabelText;
             checkBox1.Checked = IsStp;
             for (int i = 1; i < LabelTexts.Count; ++i)
             {

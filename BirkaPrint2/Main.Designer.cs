@@ -49,6 +49,7 @@
             this.versionLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.formlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -218,10 +219,21 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // Form1
+            // formlabel
+            // 
+            this.formlabel.AutoSize = true;
+            this.formlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.formlabel.Location = new System.Drawing.Point(2, 243);
+            this.formlabel.Name = "formlabel";
+            this.formlabel.Size = new System.Drawing.Size(83, 16);
+            this.formlabel.TabIndex = 18;
+            this.formlabel.Text = "Форма 4290";
+            // 
+            // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(350, 327);
+            this.Controls.Add(this.formlabel);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.versionLabel);
@@ -244,7 +256,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Печать бирок  бр. №621 ОЭТС";
@@ -277,6 +289,7 @@
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label formlabel;
     }
 }
 

@@ -133,7 +133,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool StpMode {
             get {
                 return ((bool)(this["StpMode"]));
@@ -145,7 +145,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30/16")]
+        [global::System.Configuration.DefaultSettingValueAttribute("32/16")]
         public string STP_P {
             get {
                 return ((string)(this["STP_P"]));
@@ -157,7 +157,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("35/22")]
+        [global::System.Configuration.DefaultSettingValueAttribute("37/22")]
         public string STP_CO {
             get {
                 return ((string)(this["STP_CO"]));
@@ -169,7 +169,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("36/27")]
+        [global::System.Configuration.DefaultSettingValueAttribute("39/27")]
         public string STP_SU {
             get {
                 return ((string)(this["STP_SU"]));
@@ -181,7 +181,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("23/34")]
+        [global::System.Configuration.DefaultSettingValueAttribute("26/33")]
         public string STP_CB {
             get {
                 return ((string)(this["STP_CB"]));
@@ -193,7 +193,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("15/39")]
+        [global::System.Configuration.DefaultSettingValueAttribute("17/39")]
         public string STP_SN {
             get {
                 return ((string)(this["STP_SN"]));
@@ -205,7 +205,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("38/45")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40/45")]
         public string STP_D {
             get {
                 return ((string)(this["STP_D"]));
@@ -217,7 +217,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("37/50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40/51")]
         public string STP_FIO {
             get {
                 return ((string)(this["STP_FIO"]));
@@ -253,7 +253,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("22/56")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25/56")]
         public string STP_T {
             get {
                 return ((string)(this["STP_T"]));
