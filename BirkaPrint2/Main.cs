@@ -88,6 +88,7 @@ namespace BirkaPrint2
             }
         }
 
+        int leftm = 0;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs ev)
         {
             evv = ev;
@@ -149,17 +150,17 @@ namespace BirkaPrint2
         private void CreateText(double x, double y, string text, float size = 11f)
         {
             printDocument1.OriginAtMargins = true;
+            if (leftm == 0)
+                leftm = evv.MarginBounds.Left / 2;
             evv.PageSettings.Margins = new System.Drawing.Printing.Margins(0, 0, 0, 0);
             var font = new Font("Courier New", size);
-            evv.Graphics.DrawString(text, font, Brushes.Black, in_mm(evv.MarginBounds.Left/2 + x + 15), in_mm(y- (IsStp ? 6 : 7)));
+            evv.Graphics.DrawString(text, font, Brushes.Black, in_mm(leftm + x + 15), in_mm(y- (IsStp ? 6 : 7)));
         }
 
         public static string Slice(string source, int start, int end)
         {
             if (end < 0)
-            {
                 end = source.Length + end;
-            }
             int len = end - start;
             if (source.Length - start < len)
                 return source.Substring(start, source.Length - start);
@@ -250,6 +251,11 @@ namespace BirkaPrint2
                 var t = this.Controls.Find(name, false);
                 ((Label)t[0]).Text = LabelTexts[i].Text(IsStp);
             }
+        }
+
+        private void printDocument1_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            evv = null;
         }
 
     }
