@@ -50,6 +50,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.formlabel = new System.Windows.Forms.Label();
+            this.NeedZayavka = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -71,28 +72,28 @@
             // 
             // SystemText
             // 
-            this.SystemText.Location = new System.Drawing.Point(155, 40);
+            this.SystemText.Location = new System.Drawing.Point(155, 34);
             this.SystemText.Name = "SystemText";
             this.SystemText.Size = new System.Drawing.Size(167, 20);
             this.SystemText.TabIndex = 2;
             // 
             // NameText
             // 
-            this.NameText.Location = new System.Drawing.Point(154, 68);
+            this.NameText.Location = new System.Drawing.Point(154, 62);
             this.NameText.Name = "NameText";
             this.NameText.Size = new System.Drawing.Size(167, 20);
             this.NameText.TabIndex = 3;
             // 
             // NumberText
             // 
-            this.NumberText.Location = new System.Drawing.Point(154, 94);
+            this.NumberText.Location = new System.Drawing.Point(154, 88);
             this.NumberText.Name = "NumberText";
             this.NumberText.Size = new System.Drawing.Size(167, 20);
             this.NumberText.TabIndex = 4;
             // 
             // FIOText
             // 
-            this.FIOText.Location = new System.Drawing.Point(154, 120);
+            this.FIOText.Location = new System.Drawing.Point(154, 114);
             this.FIOText.Name = "FIOText";
             this.FIOText.Size = new System.Drawing.Size(167, 20);
             this.FIOText.TabIndex = 5;
@@ -100,7 +101,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 15);
+            this.label1.Location = new System.Drawing.Point(33, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 6;
@@ -109,7 +110,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 47);
+            this.label2.Location = new System.Drawing.Point(33, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 13);
             this.label2.TabIndex = 7;
@@ -118,7 +119,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 75);
+            this.label3.Location = new System.Drawing.Point(33, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 13);
             this.label3.TabIndex = 8;
@@ -127,7 +128,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 101);
+            this.label4.Location = new System.Drawing.Point(33, 91);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 9;
@@ -136,7 +137,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 127);
+            this.label5.Location = new System.Drawing.Point(33, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 10;
@@ -155,7 +156,7 @@
             // 
             // DescText
             // 
-            this.DescText.Location = new System.Drawing.Point(154, 173);
+            this.DescText.Location = new System.Drawing.Point(154, 140);
             this.DescText.Multiline = true;
             this.DescText.Name = "DescText";
             this.DescText.Size = new System.Drawing.Size(167, 103);
@@ -164,7 +165,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 178);
+            this.label6.Location = new System.Drawing.Point(33, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 12;
@@ -173,18 +174,20 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 152);
+            this.label7.Location = new System.Drawing.Point(33, 252);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 13);
             this.label7.TabIndex = 13;
             this.label7.Text = "№ заявки на ремонт";
+            this.label7.Visible = false;
             // 
             // ZayavkaText
             // 
-            this.ZayavkaText.Location = new System.Drawing.Point(154, 146);
+            this.ZayavkaText.Location = new System.Drawing.Point(154, 249);
             this.ZayavkaText.Name = "ZayavkaText";
             this.ZayavkaText.Size = new System.Drawing.Size(167, 20);
             this.ZayavkaText.TabIndex = 6;
+            this.ZayavkaText.Visible = false;
             // 
             // versionLabel
             // 
@@ -224,16 +227,30 @@
             // 
             this.formlabel.AutoSize = true;
             this.formlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.formlabel.Location = new System.Drawing.Point(2, 243);
+            this.formlabel.Location = new System.Drawing.Point(7, 183);
             this.formlabel.Name = "formlabel";
             this.formlabel.Size = new System.Drawing.Size(83, 16);
             this.formlabel.TabIndex = 18;
             this.formlabel.Text = "Форма 4290";
             // 
+            // NeedZayavka
+            // 
+            this.NeedZayavka.AutoSize = true;
+            this.NeedZayavka.Checked = true;
+            this.NeedZayavka.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.NeedZayavka.Location = new System.Drawing.Point(32, 226);
+            this.NeedZayavka.Name = "NeedZayavka";
+            this.NeedZayavka.Size = new System.Drawing.Size(113, 17);
+            this.NeedZayavka.TabIndex = 19;
+            this.NeedZayavka.Text = "Указать заявку?";
+            this.NeedZayavka.UseVisualStyleBackColor = true;
+            this.NeedZayavka.CheckedChanged += new System.EventHandler(this.NeedZayavka_CheckedChanged);
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(350, 327);
+            this.Controls.Add(this.NeedZayavka);
             this.Controls.Add(this.formlabel);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
@@ -291,6 +308,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label formlabel;
+        private System.Windows.Forms.CheckBox NeedZayavka;
     }
 }
 

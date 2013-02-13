@@ -21,7 +21,6 @@ namespace BirkaPrint2
         string[] proisv_xy = Properties.Settings.Default.Proisvodstvo_xy.Split('/');
         string[] zayavka_xy = Properties.Settings.Default.Zayavka_xy.Split('/');
 
-        bool has_zayavka = true;
         private static System.Drawing.Printing.PrintPageEventArgs evv;
 
         string FormLabelText = "Форма 4290";
@@ -102,7 +101,7 @@ namespace BirkaPrint2
 
         private void PrintNormalText()
         {
-            if (has_zayavka)
+            if (NeedZayavka.Checked)
             {
                 CreateText(Convert.ToDouble(zayavka_xy[0]), Convert.ToDouble(zayavka_xy[1]), String.Format("З.№:{0}", ZayavkaText.Text));
             }
@@ -123,7 +122,7 @@ namespace BirkaPrint2
 
         private void PrintStpText()
         {
-            if (has_zayavka)
+            if (NeedZayavka.Checked)
             {
                 CreateText(Convert.ToDouble(Properties.Settings.Default.STP_Z.Split('/')[0]), Convert.ToDouble(Properties.Settings.Default.STP_Z.Split('/')[1]), String.Format("З.№:{0}", ZayavkaText.Text));
             }
@@ -154,7 +153,11 @@ namespace BirkaPrint2
                 leftm = evv.MarginBounds.Left / 2;
             evv.PageSettings.Margins = new System.Drawing.Printing.Margins(0, 0, 0, 0);
             var font = new Font("Courier New", size);
-            evv.Graphics.DrawString(text, font, Brushes.Black, in_mm(leftm + x + 15), in_mm(y- (IsStp ? 6 : 7)));
+            if (IsStp)
+                y = y - Properties.Settings.Default.Koeff_STP;
+            else
+                y = y - Properties.Settings.Default.Koeff_Normal;
+            evv.Graphics.DrawString(text, font, Brushes.Black, in_mm(leftm + x + 15), in_mm(y));
         }
 
         public static string Slice(string source, int start, int end)
@@ -206,18 +209,11 @@ namespace BirkaPrint2
                 DescText.Focus();
                 return false;
             }
-            if (String.IsNullOrEmpty(ZayavkaText.Text))
+            if (String.IsNullOrEmpty(ZayavkaText.Text) && NeedZayavka.Checked)
             {
-                has_zayavka = false;
-                if (MessageBox.Show("Заявка на ремонт не указана.\nХотите указать?", "Вопрос, относящийся к Вам!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    ZayavkaText.Focus();
-                    return false;
-                }
-            }
-            else
-            {
-                has_zayavka = true;
+                MessageBox.Show("Заявка на ремонт не указана.\nНеобходимо указать!", "Вопрос, относящийся к Вам!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ZayavkaText.Focus();
+                return false;
             }
             return true;
         }
@@ -245,6 +241,8 @@ namespace BirkaPrint2
         {
             formlabel.Text = IsStp ? FormLabelText + " по СТП" : FormLabelText;
             checkBox1.Checked = IsStp;
+            ZayavkaText.Visible = NeedZayavka.Checked;
+            label7.Visible = ZayavkaText.Visible;
             for (int i = 1; i < LabelTexts.Count; ++i)
             {
                 var name = "label" + (i);
@@ -256,6 +254,12 @@ namespace BirkaPrint2
         private void printDocument1_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             evv = null;
+        }
+
+        private void NeedZayavka_CheckedChanged(object sender, EventArgs e)
+        {
+            ZayavkaText.Visible = NeedZayavka.Checked;
+            label7.Visible = ZayavkaText.Visible;
         }
 
     }

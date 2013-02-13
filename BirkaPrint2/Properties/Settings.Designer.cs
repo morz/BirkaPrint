@@ -262,5 +262,23 @@ namespace BirkaPrint2.Properties {
                 this["STP_T"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Koeff_STP {
+            get {
+                return ((int)(this["Koeff_STP"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public int Koeff_Normal {
+            get {
+                return ((int)(this["Koeff_Normal"]));
+            }
+        }
     }
 }
