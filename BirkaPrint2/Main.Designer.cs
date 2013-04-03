@@ -46,11 +46,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ZayavkaText = new System.Windows.Forms.TextBox();
-            this.versionLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.formlabel = new System.Windows.Forms.Label();
             this.NeedZayavka = new System.Windows.Forms.CheckBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -189,16 +191,6 @@
             this.ZayavkaText.TabIndex = 6;
             this.ZayavkaText.Visible = false;
             // 
-            // versionLabel
-            // 
-            this.versionLabel.AutoSize = true;
-            this.versionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.versionLabel.ForeColor = System.Drawing.Color.Maroon;
-            this.versionLabel.Location = new System.Drawing.Point(3, 299);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(0, 16);
-            this.versionLabel.TabIndex = 15;
-            // 
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -246,15 +238,40 @@
             this.NeedZayavka.UseVisualStyleBackColor = true;
             this.NeedZayavka.CheckedChanged += new System.EventHandler(this.NeedZayavka_CheckedChanged);
             // 
+            // trackBar1
+            // 
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.LargeChange = 2;
+            this.trackBar1.Location = new System.Drawing.Point(-5, 306);
+            this.trackBar1.Maximum = 5;
+            this.trackBar1.Minimum = -5;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(122, 21);
+            this.trackBar1.TabIndex = 20;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(-2, 295);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(64, 13);
+            this.linkLabel1.TabIndex = 21;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Смещение:";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(350, 327);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.NeedZayavka);
             this.Controls.Add(this.formlabel);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.ZayavkaText);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -280,6 +297,7 @@
             this.Text = "Печать бирок  бр. №621 ОЭТС";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,11 +322,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox ZayavkaText;
-        private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label formlabel;
         private System.Windows.Forms.CheckBox NeedZayavka;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

@@ -37,6 +37,16 @@ namespace BirkaPrint2
             }
         }
 
+        public int Smeschenie
+        {
+            get { return Properties.Settings.Default.Smeshenie; }
+            set
+            {
+                Properties.Settings.Default["Smeshenie"] = value;
+                Properties.Settings.Default.Save();
+            }
+        }
+
 #if DEBUG
         string VER = "Beta";
 #else
@@ -55,8 +65,7 @@ namespace BirkaPrint2
             LabelTexts[6] = new LabelTextsClass("Неисправность");
             LabelTexts[7] = new LabelTextsClass("№ заявки на ремонт");
             
-            versionLabel.Text = VER == "Beta" ? VER : "";
-            this.Text = this.Text + " " + versionLabel.Text;
+            this.Text = this.Text + " " + VER;
         }
 
         /// <summary>
@@ -72,6 +81,14 @@ namespace BirkaPrint2
         private void button1_Click(object sender, EventArgs e)
         {
             if (!IsValid()) return;
+
+            if (printDocument1 == null)
+            {
+                printDocument1 = new System.Drawing.Printing.PrintDocument();
+                printDocument1.DocumentName = "Бирка";
+                printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(printDocument1_EndPrint);
+                printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocument1_PrintPage);
+            }
 
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -157,6 +174,7 @@ namespace BirkaPrint2
                 y = y - Properties.Settings.Default.Koeff_STP;
             else
                 y = y - Properties.Settings.Default.Koeff_Normal;
+            y = y + Smeschenie;
             evv.Graphics.DrawString(text, font, Brushes.Black, in_mm(leftm + x + 15), in_mm(y));
         }
 
@@ -239,6 +257,8 @@ namespace BirkaPrint2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            linkLabel1.Text = "Смещение: " + Smeschenie + " мм.";
+            trackBar1.Value = Smeschenie;
             formlabel.Text = IsStp ? FormLabelText + " по СТП" : FormLabelText;
             checkBox1.Checked = IsStp;
             ZayavkaText.Visible = NeedZayavka.Checked;
@@ -254,6 +274,8 @@ namespace BirkaPrint2
         private void printDocument1_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             evv = null;
+            printDocument1.Dispose();
+            printDocument1 = null;
         }
 
         private void NeedZayavka_CheckedChanged(object sender, EventArgs e)
@@ -261,6 +283,18 @@ namespace BirkaPrint2
             ZayavkaText.Visible = NeedZayavka.Checked;
             label7.Visible = ZayavkaText.Visible;
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Корректировка используется для вертикального смещения печати.\nПри печати бирки иногда возникает смещение относительно вертикальной оси бирки на несколько миллиметров. Такое происходит из-за различия размеров бирки.\nДанный параметр помогает откорректировать высоту печати.\nДля того чтобы выровнять текст, переместите бегунок влево или вправо на несколько позиций.\nКаждый шаг бегунка означает смещение на 1 мм.\n\nЧем меньше значение смещения - тем выше будет располагаться текст, чем выше значение - тем ниже текст.\n\nЕсли при распечатке произошло смещение текста и вы решили изменить данный параметр - убедитесь в том, что помещаемая вами в лоток принтера бирка имеет одинаковые размеры с той биркой, на которой произошло смещение печати!", "Смещение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            Smeschenie = trackBar1.Value;
+            linkLabel1.Text = "Смещение: " + Smeschenie + " мм.";
+        }
+
 
     }
 }

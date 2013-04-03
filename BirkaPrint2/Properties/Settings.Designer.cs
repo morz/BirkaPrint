@@ -265,7 +265,7 @@ namespace BirkaPrint2.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int Koeff_STP {
             get {
                 return ((int)(this["Koeff_STP"]));
@@ -278,6 +278,18 @@ namespace BirkaPrint2.Properties {
         public int Koeff_Normal {
             get {
                 return ((int)(this["Koeff_Normal"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int Smeshenie {
+            get {
+                return ((int)(this["Smeshenie"]));
+            }
+            set {
+                this["Smeshenie"] = value;
             }
         }
     }
