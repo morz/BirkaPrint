@@ -193,43 +193,43 @@ namespace BirkaPrint2
         {
             if (String.IsNullOrEmpty(CodeText.Text))
             {
-                MessageBox.Show("Не указан код оборудования!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных: " + label1.Text + "!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 CodeText.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(SystemText.Text))
             {
-                MessageBox.Show("Не указана система управления!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных: " + label2.Text + "!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SystemText.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(NameText.Text))
             {
-                MessageBox.Show("Не указан код блока!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных: " + label3.Text + "!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 NameText.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(NumberText.Text))
             {
-                MessageBox.Show("Не указан серийный номер!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных: " + label4.Text + "!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 NumberText.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(FIOText.Text))
             {
-                MessageBox.Show("Не указана фамилия!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных: " + label5.Text + "!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 FIOText.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(DescText.Text))
             {
-                MessageBox.Show("Не указана неисправность!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных: " + label6.Text + "!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DescText.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(ZayavkaText.Text) && NeedZayavka.Checked)
             {
-                MessageBox.Show("Заявка на ремонт не указана.\nНеобходимо указать!", "Вопрос, относящийся к Вам!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных: " + label7.Text + "!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ZayavkaText.Focus();
                 return false;
             }
